@@ -20,3 +20,33 @@
 .App-link {
   color: #09d3ac;
 }
+
+.recipe-card__section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 1rem;
+  border: 1px solid black;
+  width: 200px;
+  height: 400px;
+}
+
+.recipe-name {
+  font-size: 14pt;
+  max-height: 50px;
+}
+
+.recipe-image {
+  width: 200px;
+  height: 250px;
+}
+
+.viewport {
+  display: flex;
+  
+}
