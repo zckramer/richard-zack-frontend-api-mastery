@@ -18,15 +18,16 @@ return state;
   
 function Recipes () {
   const [fetchResponse, setFetchResponse] = React.useState({});
-  const [inputValue, setInputValue] = React.useState({});
-  
-  React.useEffect(() => {
+  function getRecipes(){
     fetch(BASE_URL)
     .then(res => res.json())
     .then(recipes => {
       // console.log(recipes);
       setFetchResponse(recipes)
     })
+  }
+  React.useEffect(() => {
+    getRecipes();
   }, [])
   
   function handleClick(event) {
@@ -36,7 +37,7 @@ function Recipes () {
     const name = document.querySelector(".input__recipe-name").value;
     const image = document.querySelector(".input__recipe-image").value;
 
-    const response = fetch(BASE_URL,{
+    fetch(BASE_URL,{
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -47,7 +48,9 @@ function Recipes () {
       })
     })
       .then(response => {
-        console.log(response)
+        if(response.status === 200) {
+          getRecipes();
+        }
         
       })
   }
