@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .App-logo {
@@ -22,15 +24,31 @@
 }
 
 .nav-bar {
-
+  display: flex;
+  justify-content: space-evenly;
+  top: 0;
+  position: sticky;
+  width: 100%;
+  background-color: white;
+  border-bottom: 2px solid black;
+  box-shadow: 3px 3px 10px gray;
+  z-index: 50;
 }
-
+.recipes-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+ 
+}
 .recipe-card__section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .recipe-card {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -39,7 +57,14 @@
   width: 200px;
   height: 400px;
 }
-
+.recipe-card:hover {
+  box-shadow: 3px 3px 10px blue;
+}
+.recipe-form{
+  display: block;
+  padding: 2rem;
+  background-color: rgb(146, 146, 255);
+}
 .recipe-name {
   font-size: 14pt;
   max-height: 50px;
