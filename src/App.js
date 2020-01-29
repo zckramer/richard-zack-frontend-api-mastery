@@ -1,25 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 const BASE_URL = "http://localhost:8080/recipes"
 
 function App () {
   const [content, setContent] = React.useState(null)
-  document.querySelectorAll(".recipe-card").forEach(recipe => {
-  recipe.innerHTML = "LALA"
-  recipe.addEventListener("click", function() {
-    console.log("CLICK")
-  })
-})
+  
   
   React.useEffect(() => {
    
     setContent(<Home />)
   }, [])
 
-  function handleEvent(prop) {
-    
-  }
   function handleRecipesButton() {
     setContent(<AllRecipes />)
     }
@@ -39,13 +31,12 @@ function App () {
 }
 
 function Home () {
-  const [state, setState] = React.useState(null)
-  
   
 return (
-
-      <h1>Welcome to Cocktails</h1>
-    
+  <div>
+    <h1>Welcome to Cocktails</h1>
+    <p>This is where you would log in...</p>
+  </div>
   );
 }
 
@@ -79,6 +70,7 @@ function SingleRecipePage (recipe) {
 
 function AllRecipes () {
   const [fetchResponse, setFetchResponse] = React.useState({});
+  const [isLoading, setIsLoading] = useState(false)
   
   function clearForm() {
     document.querySelector(".input__recipe-name").value = ""
@@ -88,10 +80,12 @@ function AllRecipes () {
   }
 
   function getRecipes(){
+    setIsLoading(true)
     fetch(BASE_URL)
     .then(res => res.json())
     .then(recipes => {
       setFetchResponse(recipes)
+      setIsLoading(false)
     })
   }
   React.useEffect(() => {
@@ -138,13 +132,15 @@ function AllRecipes () {
         </form>
       </section> 
       <section className="recipe-card__section">
-          {fetchResponse.Recipes && fetchResponse.Recipes.map(recipe => 
+          {isLoading ? (<div>Fetching Data...</div>
+           ) : (
+          fetchResponse.Recipes && fetchResponse.Recipes.map(recipe => 
           <RecipeCard 
-          name={recipe.name}    
-          image={recipe.image} 
-          recipeId={recipe._id}
+            name={recipe.name}    
+            image={recipe.image} 
+            recipeId={recipe._id}
           />
-            )}
+            )) }
         
       </section>
       </div>
