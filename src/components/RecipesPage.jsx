@@ -3,7 +3,7 @@ import RecipeCard from './RecipeCard'
 
 const BASE_URL = "http://localhost:8080/recipes"
 
-export default function RecipesPage() {
+export default function RecipesPage(props) {
   const [fetchResponse, setFetchResponse] = React.useState({});
   const [isLoading, setIsLoading] = React.useState(false)
 
@@ -73,6 +73,7 @@ export default function RecipesPage() {
               name={recipe.name}
               image={recipe.image}
               recipeId={recipe._id}
+              onClick={props.onClick}
             />
           ))}
 

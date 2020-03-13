@@ -14,11 +14,12 @@ function App() {
   }, [])
 
   function handleRecipesButton() {
-    setContent(<RecipesPage />)
+    setContent(<RecipesPage onClick={handleCardClick}/>)
   }
 
   function handleCardClick (event) {
-    setContent(<SingleRecipePage data={event}/>)
+    console.log(event.target.id)
+    setContent(<SingleRecipePage _id={event.target.id}/>)
   }
   
   return (
@@ -30,16 +31,4 @@ function App() {
     </div>
   );
 }
-
-// function SingleRecipePage(recipe) {
-//   return (
-//     <article className="single-recipe">
-//       <h2 className="single-recipe__title">{recipe.name}</h2>
-//       <img alt="Cocktail" className="single-recipe__image" src={recipe.image} />
-
-//     </article>
-//   )
-// }
-
-
 export default App;

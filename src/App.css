@@ -57,6 +57,10 @@
   width: 200px;
   height: 400px;
 }
+.recipe-card > * {
+  pointer-events: none;
+}
+
 .recipe-card:hover {
   box-shadow: 3px 3px 10px blue;
 }
