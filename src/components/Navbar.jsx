@@ -1,0 +1,11 @@
+import React from 'react'
+
+export default function Navbar(props) {
+    return (
+        <nav className= "nav-bar"> 
+            <p className= "nav__welcome-text">Welcome! </p>
+            <p className= "nav__welcome-text">the Nav-Bar ;P</p>
+            <button className="recipes-button" onClick={props.onClick} value="recipes">All Recipes</button>
+        </nav>
+    )
+}
