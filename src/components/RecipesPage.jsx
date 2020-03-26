@@ -26,11 +26,7 @@ export default function RecipesPage(props) {
 
   return (
     <div className="App">
-      <NewRecipeForm />
       <div className="recipes-container">
-        <section className="recipe-form">
-          <p>New Cocktail:</p>
-        </section>
         <section className="recipe-card__section">
           {isLoading ? (<div>Loading Data...</div>) : (fetchResponse.Recipes && fetchResponse.Recipes.map(recipe =>
             <RecipeCard 

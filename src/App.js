@@ -9,13 +9,15 @@ import NewRecipeForm from './components/NewRecipeForm'
 
 function App() {
   const [content, setContent] = React.useState(null)
-  
+  const [modal, setModal] = React.useState("")
   
   React.useEffect(() => {
     setContent(<Home />)
   }, [])
 
-  function handleRecipesButton() {
+  function handleRecipesButton(event) {
+    event.preventDefault();
+    clearModal()
     setContent(<RecipesPage onClick={handleCardClick}/>)
   }
 
@@ -23,14 +25,22 @@ function App() {
     console.log(event.target.id)
     setContent(<SingleRecipePage _id={event.target.id}/>)
   }
+
+  function handleNewRecipeModal() {
+    setModal(<NewRecipeForm show="true" onSubmit={handleRecipesButton} clearModal={clearModal}/>)
+  }
+
+  function clearModal() {
+    setModal("")
+  }
   
   return (
     <>
-    <NewRecipeForm show="true" />
-      <Navbar onClick={handleRecipesButton} />
+    {modal}
+      <Navbar onClick={handleRecipesButton} newRecipe={handleNewRecipeModal} clearModal={clearModal} />
       <div>
         {content}
-      </div>
+      </div> 
     </>
   );
 }

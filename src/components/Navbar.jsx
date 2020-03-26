@@ -6,6 +6,7 @@ export default function Navbar(props) {
             <p className= "nav__welcome-text">Welcome! </p>
             <p className= "nav__welcome-text">the Nav-Bar ;P</p>
             <button className="recipes-button" onClick={props.onClick} value="recipes">All Recipes</button>
+            <button className="new-recipe-button" onClick={props.newRecipe}>New Recipe</button>
         </nav>
     )
 }

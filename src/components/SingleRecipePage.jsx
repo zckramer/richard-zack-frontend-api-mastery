@@ -20,7 +20,7 @@ export default function SingleRecipePage(props) {
         <div className="Single-Recipe-Page">
             <article className="Single-Recipe-Card">
                 <div>Name: {fetchData.name ? fetchData.name : "loading..."}</div>
-                <img alt="just a placekitten..." src={fetchData.image ? fetchData.image : "loading..."}></img>
+                <img className="recipe-page-img" alt="just a placekitten..." src={fetchData.image ? fetchData.image : "loading..."}></img>
                 <p>{fetchData.description ? fetchData.description : "loading..."}</p>
                 <ul>
                     
