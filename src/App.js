@@ -15,8 +15,7 @@ function App() {
     setContent(<Home />)
   }, [])
 
-  function handleRecipesButton(event) {
-    event.preventDefault();
+  function handleRecipesButton() {
     clearModal()
     setContent(<RecipesPage onClick={handleCardClick}/>)
   }
