@@ -4,10 +4,12 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import RecipesPage from './components/RecipesPage'
 import SingleRecipePage from './components/SingleRecipePage'
+import NewRecipeForm from './components/NewRecipeForm'
 
 
 function App() {
   const [content, setContent] = React.useState(null)
+  
   
   React.useEffect(() => {
     setContent(<Home />)
@@ -23,12 +25,13 @@ function App() {
   }
   
   return (
-    <div>
+    <>
+    <NewRecipeForm show="true" />
       <Navbar onClick={handleRecipesButton} />
       <div>
         {content}
       </div>
-    </div>
+    </>
   );
 }
 export default App;

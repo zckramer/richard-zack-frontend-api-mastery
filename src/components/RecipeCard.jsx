@@ -10,4 +10,3 @@ export default function RecipeCard(recipe) {
       </article>       
     )
 }
-
