@@ -57,7 +57,7 @@
   width: 200px;
   height: 400px;
 }
-.recipe-card > * {
+.recipe-card > .recipe-name, .recipe-card > .recipe-image {
   pointer-events: none;
 }
 

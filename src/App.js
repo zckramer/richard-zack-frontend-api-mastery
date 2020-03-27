@@ -5,7 +5,7 @@ import Navbar from './components/Navbar'
 import RecipesPage from './components/RecipesPage'
 import SingleRecipePage from './components/SingleRecipePage'
 import NewRecipeForm from './components/NewRecipeForm'
-
+import DeleteRecipe from './components/DeleteRecipe'
 
 function App() {
   const [content, setContent] = React.useState(null)
@@ -17,11 +17,10 @@ function App() {
 
   function handleRecipesButton() {
     clearModal()
-    setContent(<RecipesPage onClick={handleCardClick}/>)
+    setContent(<RecipesPage onClick={handleCardClick} onDelete={onDeleteRecipe}/>)
   }
 
   function handleCardClick (event) {
-    console.log(event.target.id)
     setContent(<SingleRecipePage _id={event.target.id}/>)
   }
 
@@ -29,6 +28,10 @@ function App() {
     setModal(<NewRecipeForm show="true" onSubmit={handleRecipesButton} clearModal={clearModal}/>)
   }
 
+  function onDeleteRecipe(event) {
+    setModal(<DeleteRecipe id={event.target.id} baseURL="http://localhost:8080/recipes/" clearModal={clearModal} name={event.target.name} onSubmit={handleRecipesButton} />)
+  }
+  
   function clearModal() {
     setModal("")
   }
@@ -36,7 +39,7 @@ function App() {
   return (
     <>
     {modal}
-      <Navbar onClick={handleRecipesButton} newRecipe={handleNewRecipeModal} clearModal={clearModal} />
+    <Navbar onClick={handleRecipesButton} newRecipe={handleNewRecipeModal} clearModal={clearModal} />
       <div>
         {content}
       </div> 

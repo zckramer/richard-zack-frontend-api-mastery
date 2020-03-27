@@ -36,6 +36,7 @@ export default function RecipesPage(props) {
               recipeId={recipe._id}
               description={recipe.description}
               onClick={props.onClick}
+              onDelete={props.onDelete}
             />
           ))}
 
