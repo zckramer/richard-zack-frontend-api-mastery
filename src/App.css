@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   margin-left: auto;
@@ -98,39 +99,59 @@
 }
 
 .modal-content {
+  position: relative;
   display: flex;
   flex-flow: column wrap;
   height: 30rem;
   width: 60%;
-  background-color: aliceblue;
+  max-width: 50rem;
+  background-color: rgb(202, 59, 59);
+  border: white solid 3px;
   margin: auto;
   padding: 2rem;
 }
 
 .modal-content > input {
+  position: relative;
+  font-size: 1.2rem;
   height: 2rem;
   max-width: 20rem;
   min-width: 15rem;
   padding: .5rem;
   margin: .2rem auto;
 }
+.modal-content.submitted > *:invalid, .modal-content.submitted > section > *:invalid {
+  background-color: rgb(110, 35, 35);
+  border: yellow 3px solid;
+  color: white;
+  
+}
+
+.modal-content > input:active {
+  outline: rgb(157, 255, 0) .8rem;
+}
 
 .modal-content > button {
+  background-color: rgb(252, 252, 252);
+  padding: .2rem;
+  cursor: pointer;
   max-width: 10rem;
   max-height: 5rem;
   border-radius: 10px;
   margin: auto;
 }
 
+.modal-content > button:hover {
+  background-color: rgb(175, 175, 175);
+  transition: .3s;
+}
+
+.modal-exit {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+}
 .recipe-page-img {
   max-height: 10rem;
 }
 
-.input__recipe-ingredient-container {
-  display: flex;
-  flex-direction: row nowrap;
-  height: auto;
-  width: 60%;
-  min-width: 10rem;
-  margin: 0 auto;
-}

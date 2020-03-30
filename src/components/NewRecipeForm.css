@@ -1,0 +1,20 @@
+.input__recipe-ingredient {
+    width: 12rem;
+    margin: .2rem auto;
+}
+.input__recipe-ingredient-container {
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    width: 50%;
+    min-width: 10rem;
+    max-width: 15rem;
+    
+    overflow-y: auto;
+    margin: 0 auto;
+  }
+
+/*     
+.input__recipe-ingredient-container::-webkit-scrollbar-track {
+    border-radius: 10px;
+} */
