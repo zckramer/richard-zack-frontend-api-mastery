@@ -17,16 +17,22 @@ function App() {
 
   function handleRecipesButton() {
     clearModal()
-    setContent(<RecipesPage onClick={handleCardClick} onDelete={onDeleteRecipe}/>)
+    setContent(<RecipesPage onClick={handleSingleRecipePage} onDelete={onDeleteRecipe}/>)
   }
 
-  function handleCardClick (event) {
-    setContent(<SingleRecipePage _id={event.target.id}/>)
+  function handleSingleRecipePage (event) {
+    setContent(<SingleRecipePage _id={event.target.id ? event.target.id : "try again"}/>)
+  }
+
+  function handleShowNewRecipe(id) {
+    clearModal()
+    setContent(<SingleRecipePage _id={id} />)
   }
 
   function handleNewRecipeModal() {
-    setModal(<NewRecipeForm show="true" onSubmit={handleRecipesButton} clearModal={clearModal}/>)
+    setModal(<NewRecipeForm show="true" onSubmit={handleShowNewRecipe} clearModal={clearModal}/>)
   }
+  
 
   function onDeleteRecipe(event) {
     setModal(<DeleteRecipe id={event.target.id} baseURL="http://localhost:8080/recipes/" clearModal={clearModal} name={event.target.name} onSubmit={handleRecipesButton} />)

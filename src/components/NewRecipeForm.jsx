@@ -29,7 +29,7 @@ const [ingredientFields, setIngredientFields] = React.useState([IngredientInputE
     const ingredientsArray = document.querySelectorAll(".input__recipe-ingredient");
     const ingredients = []
     ingredientsArray.forEach(ingredient => {
-      console.log(ingredient.value)
+      // console.log(ingredient.value)
       if(ingredient.value) {
         ingredients.push(ingredient.value) 
         } 
@@ -49,9 +49,13 @@ const [ingredientFields, setIngredientFields] = React.useState([IngredientInputE
           instructions: instructions
         })
       })
-        .then(response => {
-          if (response.status === 200) {
-            props.onSubmit()
+        .then(res => {
+          if (res.status === 200) {
+            res.json()
+            .then(responseData => {
+              console.log(responseData)
+              props.onSubmit(responseData.response._id)
+            })
           }
         })
     } else {
@@ -74,7 +78,6 @@ const [ingredientFields, setIngredientFields] = React.useState([IngredientInputE
         <button className="recipe-add-ingredient" name="add-ingredient" onClick={handleAddIngredientField}>Add another Ingredient</button>
         <button type="submit" onClick={handleSubmit}>Submit Cocktail</button>
         <button type="button" onClick={props.clearModal} className="modal-exit"> X </button>
-
       </form>
     </div>
   )

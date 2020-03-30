@@ -10,7 +10,7 @@ export default function SingleRecipePage(props) {
         fetch(BASE_URL + '/' + props._id)
             .then(res => res.json())
             .then(recipeData => {
-                console.log(recipeData.Recipe)
+                // console.log(recipeData.Recipe)
                 setFetchData(recipeData.Recipe)
             })
         
