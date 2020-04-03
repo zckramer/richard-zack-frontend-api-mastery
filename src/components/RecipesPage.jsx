@@ -2,7 +2,7 @@ import React from 'react'
 import RecipeCard from './RecipeCard'
 import NewRecipeForm from './NewRecipeForm'
 
-const BASE_URL = "http://localhost:8080/recipes"
+const BASE_URL = "http://localhost:8080/recipes/"
 
 export default function RecipesPage(props) {
   const [fetchResponse, setFetchResponse] = React.useState({});

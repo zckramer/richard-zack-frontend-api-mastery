@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-const BASE_URL = "http://localhost:8080"
+const BASE_URL = "http://localhost:8080/recipes/"
 
 export default function SingleRecipePage(props) {
 
     const [fetchData, setFetchData] = React.useState({});
     
     React.useEffect(() => {
-        fetch(BASE_URL + '/' + props._id)
+        fetch(BASE_URL + props._id)
             .then(res => res.json())
             .then(recipeData => {
                 // console.log(recipeData.Recipe)
@@ -29,7 +29,8 @@ export default function SingleRecipePage(props) {
                     }) : "loading..."}
                 
                 </ul>
-
+                    <button type="button" id={props._id} onClick={props.edit}>Edit</button>
+                    <button type="button" name={fetchData.name} id={props._id} onClick={props.delete}>Delete</button>
             </article>
         </div>
     )

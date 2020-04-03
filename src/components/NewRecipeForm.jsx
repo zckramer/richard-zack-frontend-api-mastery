@@ -66,6 +66,7 @@ const [ingredientFields, setIngredientFields] = React.useState([IngredientInputE
   return (
     <div className="modal-container show">
       <form className="modal-content">
+        <h2>New Recipe Form</h2>
         <input className="input__recipe-name" required name="name" placeholder="drop in your own recipe!"></input>
         <input className="input__recipe-image" required name="image" placeholder="Cocktail Image URL"></input>
         <input className="input__recipe-description" required name="description" placeholder="Write a sentence or two about this drink...!"></input>
