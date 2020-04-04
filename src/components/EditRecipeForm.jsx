@@ -31,18 +31,25 @@ export default function EditRecipeForm(props) {
   }, [props._id]);
 
   // const [recipeData, setRecipeData] = React.useState(null)
-  const [ingredientFields, setIngredientFields] = React.useState([
-    NewIngredientInputElement,
-  ]);
+  const [ingredientFields, setIngredientFields] = React.useState([]);
   
   React.useEffect(() => {
     if (fetchData.ingredients) {
-      fetchData.ingredients.map((ingredient) => {
-
-        setIngredientFields([...ingredientFields, <><input className="input__recipe-ingredient" name="ingredient" defaultValue={ingredient ? ingredient : ""} placeholder="Ingredient Name"></input></>])
+      fetchData.ingredients.map(ingredient => {
+        
+        setIngredientFields(oldIngredientsFields => [...oldIngredientsFields, 
+                            <>
+                              <input 
+                                className="input__recipe-ingredient" 
+                                name="ingredient" 
+                                key={ingredient._id}
+                                defaultValue={ingredient ? ingredient : "loading..."} 
+                                placeholder="Ingredient Name">   
+                              </input>
+                            </>])
       });
     }
-  });
+  },[fetchData.ingredients]);
 
   function handleAddIngredientField(event) {
     event.preventDefault();
