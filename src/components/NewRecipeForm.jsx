@@ -1,17 +1,29 @@
 import React from 'react'
 import './NewRecipeForm.css'
+import trashPic from './trash.png'
 
 const BASE_URL = "http://localhost:8080/recipes"
 
 export default function NewRecipeForm(props) {
-const IngredientInputElement = <input required className="input__recipe-ingredient" name="ingredient" placeholder="Ingredient Name"></input>
+const IngredientInputElement = <><label className="form__ingredient-wrapper"><img src={trashPic} onClick={handleDeleteIngredientField}></img><input required className="input__recipe-ingredient" name="ingredient" placeholder="Ingredient Name"></input></label></>
 const [ingredientFields, setIngredientFields] = React.useState([IngredientInputElement])
 
+// React.useEffect(()=>{
+//   setIngredientFields(
+//     <label className="form__ingredient-wrapper" key="0">
+//       <img src={trashPic} onClick={handleDeleteIngredientField}></img>
+//       <input required className="input__recipe-ingredient" name="ingredient" placeholder="Ingredient Name"></input>
+//     </label>)
+// },[])
 
   function handleAddIngredientField(event) {
     event.preventDefault();
     const oldIngredientsFields = ingredientFields
     setIngredientFields([...oldIngredientsFields, IngredientInputElement])
+  }
+
+  function handleDeleteIngredientField(event) {
+    event.target.parentNode.innerHTML = ""
   }
 
   function handleSubmitValidationStyle() {
@@ -72,9 +84,9 @@ const [ingredientFields, setIngredientFields] = React.useState([IngredientInputE
         <input className="input__recipe-description" required name="description" placeholder="Write a sentence or two about this drink...!"></input>
         <input className="input__recipe-instructions" required name="instructions" placeholder="Detailed instructions on how to make this drink..."></input>
         <section className="input__recipe-ingredient-container">
-          {ingredientFields.map(field=>{
+          {ingredientFields ? ingredientFields.map(field=>{
             return field
-          })}
+          }) : "loading"}
         </section>
         <button className="recipe-add-ingredient" name="add-ingredient" onClick={handleAddIngredientField}>Add another Ingredient</button>
         <button type="submit" onClick={handleSubmit}>Submit Cocktail</button>

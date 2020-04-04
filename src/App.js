@@ -16,6 +16,10 @@ function App() {
     setContent(<Home />)
   }, [])
 
+  function handleGoHome() {
+    setContent(<Home />)
+  }
+
   function handleRecipesButton() {
     clearModal()
     setContent(<RecipesPage onClick={handleSingleRecipePage} onDelete={deleteRecipeModal}/>)
@@ -54,10 +58,11 @@ function App() {
   return (
     <>
     {modal}
-    <Navbar onClick={handleRecipesButton} newRecipe={handleNewRecipeModal} clearModal={clearModal} />
-      <div>
+    <div className="App">
+    <Navbar homeButton={handleGoHome} onClick={handleRecipesButton} newRecipe={handleNewRecipeModal} clearModal={clearModal} />
+      
         {content}
-      </div> 
+    </div>
     </>
   );
 }

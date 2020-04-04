@@ -3,6 +3,7 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  height: 100%;
 }
 
 .App-logo {
@@ -27,58 +28,63 @@
 .nav-bar {
   display: flex;
   justify-content: space-evenly;
+  align-content: center;
+
   top: 0;
   position: sticky;
   width: 100%;
-  background-color: white;
+  height: 2rem;
+  /* background-color: rgb(131, 0, 0); */
+  background-image: url(./components/navbarBG.jpg);
   border-bottom: 2px solid black;
   box-shadow: 3px 3px 10px gray;
   z-index: 50;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10+ and Edge */
+  user-select: none; /* Standard syntax */
 }
+
+.nav-bar > * {
+  margin: auto;
+}
+
+.nav-bar > .link {
+  padding: .4rem;
+}
+
+.nav-bar > .link:hover {
+  cursor: pointer;
+  background: none;
+}
+
+.nav-bar > .link:hover::after {
+  cursor: pointer;
+  background-color: blue;
+  height: 100%;
+  width: 100%;
+}
+
 .recipes-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
- 
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  overflow: auto; 
 }
+
 .recipe-card__section {
   display: flex;
   justify-content: center;
+  align-content: center;
   flex-wrap: wrap;
+  height: 100%;
+  margin: auto;
+  overflow: auto;
 }
 
-.recipe-card {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin: 1rem;
-  border: 1px solid black;
-  width: 200px;
-  height: 400px;
-}
-.recipe-card > .recipe-name, .recipe-card > .recipe-image {
-  pointer-events: none;
-}
 
-.recipe-card:hover {
-  box-shadow: 3px 3px 10px blue;
-}
-.recipe-form{
-  display: block;
-  padding: 2rem;
-  background-color: rgb(146, 146, 255);
-}
-.recipe-name {
-  font-size: 14pt;
-  max-height: 50px;
-}
-
-.recipe-image {
-  width: 200px;
-  height: 250px;
-}
 
 .viewport {
   display: flex;
@@ -105,7 +111,7 @@
   height: 30rem;
   width: 60%;
   max-width: 50rem;
-  background-color: rgb(202, 59, 59);
+  background-color: rgba(131, 0, 0, .8);
   border: white solid 3px;
   margin: auto;
   padding: 2rem;
@@ -150,6 +156,7 @@
   top: .5rem;
   right: .5rem;
 }
+
 .recipe-page-img {
   max-height: 10rem;
 }

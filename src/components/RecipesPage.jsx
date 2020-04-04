@@ -25,7 +25,7 @@ export default function RecipesPage(props) {
 
 
   return (
-    <div className="App">
+    
       <div className="recipes-container">
         <section className="recipe-card__section">
           {isLoading ? (<div>Loading Data...</div>) : (fetchResponse.Recipes && fetchResponse.Recipes.map(recipe =>
@@ -42,6 +42,6 @@ export default function RecipesPage(props) {
 
         </section>
       </div>
-    </div>
+    
   )
 }

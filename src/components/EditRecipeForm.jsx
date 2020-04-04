@@ -1,59 +1,63 @@
 import React from "react";
 import "./NewRecipeForm.css";
+import trashPic from './trash.png'
 
 const BASE_URL = "http://localhost:8080/recipes/";
 
 export default function EditRecipeForm(props) {
-  const NewIngredientInputElement = (
-    <input
-      required
-      className="input__recipe-ingredient"
-      name="ingredient"
-      placeholder="Ingredient Name"
-    ></input>
-  );
-
-  // {fetchData.ingredients ? fetchData.ingredients.map(ingredient=>{
-  //   console.log(ingredient)
-  //     return <><input className="input__recipe-ingredient" name="ingredient" defaultValue={ingredient ? ingredient : ""} placeholder="Ingredient Name"></input></>
-  // }) : "loading..."
-  // }
-
+  const NewIngredientInputElement = 
+  <>
+    <label 
+      className="form__ingredient-wrapper">
+      <img 
+        src={trashPic} 
+        onClick={handleDeleteIngredientField}>
+      </img>
+      <input 
+        required className="input__recipe-ingredient" 
+        name="ingredient" 
+        placeholder="Ingredient Name">
+      </input>
+    </label></>
+  ;
+ 
   const [fetchData, setFetchData] = React.useState({});
-
   React.useEffect(() => {
     fetch(BASE_URL + props._id)
       .then((res) => res.json())
       .then((recipeData) => {
-        console.log(recipeData.Recipe);
         setFetchData(recipeData.Recipe);
       });
   }, [props._id]);
 
-  // const [recipeData, setRecipeData] = React.useState(null)
   const [ingredientFields, setIngredientFields] = React.useState([]);
-  
   React.useEffect(() => {
     if (fetchData.ingredients) {
-      fetchData.ingredients.map(ingredient => {
+      fetchData.ingredients.map((ingredient, index) => {
         
         setIngredientFields(oldIngredientsFields => [...oldIngredientsFields, 
-                            <>
+                          <>
+                            <label className="form__ingredient-wrapper" index={index}>
+                              <img src={trashPic} onClick={handleDeleteIngredientField}></img>
                               <input 
                                 className="input__recipe-ingredient" 
                                 name="ingredient" 
-                                key={ingredient._id}
+                                index={index}
                                 defaultValue={ingredient ? ingredient : "loading..."} 
                                 placeholder="Ingredient Name">   
                               </input>
-                            </>])
+                            </label>
+                          </>])
       });
     }
   },[fetchData.ingredients]);
 
+  function handleDeleteIngredientField(event) {
+    event.target.parentNode.innerHTML = ""
+  }
+
   function handleAddIngredientField(event) {
     event.preventDefault();
-    console.log("button clicked");
     const oldIngredientsFields = ingredientFields;
     setIngredientFields([...oldIngredientsFields, NewIngredientInputElement]);
   }
@@ -77,7 +81,6 @@ export default function EditRecipeForm(props) {
     );
     const ingredients = [];
     ingredientsArray.forEach((ingredient) => {
-      // console.log(ingredient.value)
       if (ingredient.value) {
         ingredients.push(ingredient.value);
       }
