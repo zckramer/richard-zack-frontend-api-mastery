@@ -19,12 +19,18 @@ li {
 }
 
 .recipe-page__img {
-    width: 24rem;
-    height: 36rem;
+    width: 12rem;
+    height: 18rem;
     margin: 1rem;
     box-shadow: 0px 0px 1rem .5rem whitesmoke;
 }
 
+.recipe-page__instructions {
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid whitesmoke;
+    border-radius: 4px;
+}
 
 .Single-Recipe-Page {
     display: flex;

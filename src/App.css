@@ -1,4 +1,5 @@
 
+
 .App {
   text-align: center;
   margin-left: auto;
@@ -42,26 +43,61 @@
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10+ and Edge */
   user-select: none; /* Standard syntax */
-}
 
-.nav-bar > * {
+  --bourbon-color1:rgba(255, 134, 35, 0.671);
+  --bourbon-color2:rgba(233, 122, 31, 0.2);
+}
+.nav-bar__link-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.nav-bar__link-wrapper > * {
   margin: auto;
 }
 
-.nav-bar > .link {
-  padding: .4rem;
+.nav-bar__link-wrapper > .link {
+  display: flex;
+  align-content: flex-end;
+  justify-content: center;
+  position: relative;
+  margin: auto .2rem;
+  height: 2rem;
+  width: 3rem;
+  border-left: 1px white solid;
+  border-right: 1px white solid;
 }
 
-.nav-bar > .link:hover {
+.nav-bar__link-wrapper > .link:hover {
   cursor: pointer;
   background: none;
 }
 
-.nav-bar > .link:hover::after {
-  cursor: pointer;
-  background-color: blue;
-  height: 100%;
+.nav-bar__link-wrapper > .link > span {
+  position: absolute;
+  z-index: -10;
+  background-image: linear-gradient(to right, var(--bourbon-color1), var(--bourbon-color2), var(--bourbon-color1));
+  border-radius: 2px;
+  border-top: 1px rgb(255, 255, 255) solid;
+  height: 0%;
   width: 100%;
+  bottom: 0;
+  left: 0;
+  transition: .2s;
+}
+.nav-bar__link-wrapper > .link:hover > span {
+ 
+  border-top: 4px rgb(29, 0, 0) solid;
+  height: 100%;
+  transition: .8s ease-out;
+  /* animation: fill-link 2s cubic-bezier(0.6, -0.28, 0.735, 0.045) fill-mode; */
+}
+@keyframes fill-link{
+  from{
+    height: 0%;
+  }
+  to{
+    height: 100%;
+  }
 }
 
 .recipes-container {
@@ -80,6 +116,7 @@
   align-content: center;
   flex-wrap: wrap;
   height: 100%;
+  width: 100%;
   margin: auto;
   overflow: auto;
 }

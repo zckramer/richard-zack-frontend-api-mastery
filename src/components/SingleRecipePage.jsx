@@ -30,14 +30,14 @@ export default function SingleRecipePage(props) {
                 </h3>
             </div>
             <div className="recipe-page__details">
-                <p>{fetchData.description ? fetchData.description : "loading..."}</p>
+                <p className="recipe-page__description">{fetchData.description ? fetchData.description : "loading..."}</p>
                 
                 <ul>                
                     {fetchData.ingredients ? fetchData.ingredients.map((ingredient, index) => {
                         return <li key={index}>{ingredient}</li>
                     }) : "loading..."}
                 </ul>
-
+                <p className="recipe-page__instructions">{fetchData.instructions ? fetchData.instructions : "loading..."}</p>
             </div>
             <div className="recipe-page__buttons">
                 <button type="button" id={props._id} onClick={props.edit}>Edit</button>
